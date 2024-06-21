@@ -112,8 +112,8 @@ export class GptController {
       }),
     )
     file: Express.Multer.File,
-    @Body('prompt') audioToTextDto: AudioToTextDto,
+    @Body('prompt') audioToTextDto?: AudioToTextDto,
   ) {
-    return this.gptService.audioToText(file, audioToTextDto);
+    return this.gptService.audioToText(file, audioToTextDto?.prompt ?? '');
   }
 }
